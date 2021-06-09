@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select with Optgroup</title>
+</head>
+
+<body>
+    <h2>Select with Optgroup</h2>
+    <a href="./index.html">Back to index page.</a>
+    <br/>
+    <div>
+        <input id="datepicker-display" type="text" disabled="disabled">
+    </div>
+    <br />
+    <div>
+        <select name="datepicker-year" id="datepicker-year">
+            <optgroup label="Year">
+                <option value="2020">2020</option>
+                <option value="2021" selected="selected">2021</option>
+            </optgroup>
+        </select>
+        <select name="datepicker-month" id="datepicker-month">
+            <optgroup label="Month">
+                <option value="0">1月</option>
+                <option value="1">2月</option>
+                <option value="2">3月</option>
+                <option value="3">4月</option>
+                <option value="4">5月</option>
+                <option value="5" selected="selected">6月</option>
+                <option value="6">7月</option>
+                <option value="7">8月</option>
+                <option value="8">9月</option>
+                <option value="9">10月</option>
+                <option value="10">11月</option>
+                <option value="11">12月</option>
+            </optgroup>
+        </select>
+    </div>
+    <script>
+        var datepickerYear = document.getElementById('datepicker-year');
+        var datepickerMonth = document.getElementById('datepicker-month');
+        var datepickerDisplay = document.getElementById('datepicker-display');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            datepickerDisplay.value = '' + datepickerYear.value + '/' + (Number(datepickerMonth.value) + 1) + '';
+        });
+
+        datepickerYear.addEventListener('change', function () {
+            // console.log(this.value, datepickerMonth.value)
+            datepickerDisplay.value = '' + this.value + '/' + (Number(datepickerMonth.value) + 1) + '';
+        })
+        datepickerMonth.addEventListener('change', function () {
+            // console.log(datepickerYear.value, this.value)
+            datepickerDisplay.value = '' + datepickerYear.value + '/' + (Number(this.value) + 1) + '';
+        })
+    </script>
+</body>
+
+</html>
